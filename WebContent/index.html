@@ -2,17 +2,87 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Home</title>
+
+<script>
+	function validateForm() {
+
+		var textStore = document.getElementById('textStore');
+		var textItem = document.getElementById('textItem');
+		var helpMsg = "Please enter a Store and an Item, silly!";
+
+		if (textStore.value.length == 0 || textItem.value.length == 0) {
+			alert(helpMsg);
+			if (textStore.value.length == 0) {
+				textStore.focus();
+			} else {
+				textItem.focus();
+			}
+			return false;
+		}
+		return true;
+	}
+</script>
+
+<style type="text/css">
+body {
+	font: 1em sans-serif;
+	padding: 0;
+	margin: 0;
+}
+
+form {
+	max-width: 200px;
+}
+
+p * {
+	display: block;
+	margin: 1em;
+}
+
+input[type=text] {
+	-webkit-appearance: none;
+	width: 100%;
+	border: thin solid #333;
+	margin: 0;
+	font-family: inherit;
+	font-size: 90%;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+/* this is for the those pesky invalid fields */
+input:invalid {
+	border-color: #900;
+	background-color: #FDD;
+}
+
+input:focus:invalid {
+	outline: none;
+}
+
+</style>
+
 </head>
 <body>
 
-<form action = "addItemServlet" method="post">
-	Store: <input type ="text" name = "store">
-	Item: <input type = "text" name = "item">
-	<input type = "submit" value="Add Item">
-</form> <br />
+	<form onsubmit='return validateForm()' method="post"
+		action="addItemServlet">
+		<p>
+			<label for="store">Store: <input type="text" id="textStore"
+				name="store"></label>
+		</p>
+		<p>
+			<label for="item">Item: <input type="text" id="textItem"
+				name="item"></label>
+		</p>
+		<p>
+			<input type="submit" value="Add Item">
+		</p>
+	</form>
+	<br />
 
-<a href = "viewAllItemsServlet">View the complete list</a>
+	<a href="viewAllItemsServlet">View the complete list</a>
 
 
 </body>

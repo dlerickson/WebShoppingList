@@ -9,7 +9,7 @@ import model.Shopper;
 
 public class ShopperHelper {
 
-	static EntityManagerFactory emfactory = Persistence.createEntityManagerFactory("UserShoppingLists");
+	static EntityManagerFactory emfactory = Persistence.createEntityManagerFactory("ConsoleShoppingList");
 	
 	public void insertShopper(Shopper s) {
 		EntityManager em = emfactory.createEntityManager();
